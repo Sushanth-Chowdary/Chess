@@ -57,6 +57,16 @@ body {
     grid-row: 2;
 }
 
+.row div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row div img {
+    width: 100%;
+    height: 100%;
+}
 
 
 
