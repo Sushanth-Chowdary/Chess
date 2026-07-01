@@ -21,9 +21,10 @@ body {
 
 
 .chess-board {
-    border: 2px solid white;
     display: grid;
     grid-template-rows: repeat(8, 1fr);
+    background-image: url('./boards/green.png');
+    background-size: cover;
 }
 
 .row {
@@ -31,20 +32,15 @@ body {
     grid-template-columns: repeat(8, 1fr);
 }
 
-.row.row-odd div:nth-child(odd) { background-color: white; }
-.row.row-odd div:nth-child(even) { background-color: black; }
-
-.row.row-even div:nth-child(odd) { background-color: black; }
-.row.row-even div:nth-child(even) { background-color: white; }
 
 .notation.letters {
     display: grid;
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns: repeat(8, 1fr);
 }
 
 .notation.numbers {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
 }
 
 
@@ -60,3 +56,14 @@ body {
     grid-column: 1;
     grid-row: 2;
 }
+
+
+
+
+
+/* 
+.row.row-odd div:nth-child(odd) { background-color: white; }
+.row.row-odd div:nth-child(even) { background-color: black; }
+
+.row.row-even div:nth-child(odd) { background-color: black; }
+.row.row-even div:nth-child(even) { background-color: white; } */
