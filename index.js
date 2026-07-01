@@ -25,4 +25,24 @@ function renderBoard() {
     }
 }
 
+
+
+// moce pieces from one square to another
+function movePiece(fromSquare, toSquare) {
+    const fromElement = document.getElementById(fromSquare);
+    const toElement = document.getElementById(toSquare);
+    toElement.innerHTML = fromElement.innerHTML;
+    fromElement.innerHTML = '';
+}
+
+
+document.querySelectorAll('.chess-board .row div').forEach(square => {
+    square.addEventListener('click', () => {
+        const squareId = square.id;
+        console.log(`Square clicked: ${squareId}`);
+    })
+});
+
 renderBoard();
+
+movePiece("E2", "E4");
