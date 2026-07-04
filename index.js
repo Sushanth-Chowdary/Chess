@@ -20,29 +20,50 @@ function renderBoard() {
         const element = document.getElementById(squareId);
         
         if (element) {
-            element.innerHTML = `<img src="./pieces/classic/${piece}.png" alt="${piece}">`;
+            element.innerHTML = `<img src="./pieces/classic/${piece}.png" alt="${piece}" draggable="true">`;
         }
     }
 }
 
-
-
-// moce pieces from one square to another
 function movePiece(fromSquare, toSquare) {
     const fromElement = document.getElementById(fromSquare);
     const toElement = document.getElementById(toSquare);
+    
     toElement.innerHTML = fromElement.innerHTML;
     fromElement.innerHTML = '';
 }
 
-
 document.querySelectorAll('.chess-board .row div').forEach(square => {
     square.addEventListener('click', () => {
-        const squareId = square.id;
-        console.log(`Square clicked: ${squareId}`);
-    })
+        console.log(`Square clicked: ${square.id}`);
+    });
+});
+
+
+board.addEventListener('dragstart', (event) => {
+    if (event.target.tagName === 'IMG') {
+        event.dataTransfer.setData('text/plain', event.target.parentElement.id);
+    } else {
+        event.preventDefault();
+    }
+});
+
+board.addEventListener('dragover', (event) => {
+    event.preventDefault(); // Tells the browser "Yes, you can drop things here"
+});
+
+board.addEventListener('drop', (event) => {
+    event.preventDefault();
+    const fromSquareId = event.dataTransfer.getData('text/plain');
+    let toSquareElement = event.target;
+    if (toSquareElement.tagName === 'IMG') {
+        toSquareElement = toSquareElement.parentElement; 
+    }
+    const toSquareId = toSquareElement.id;
+    if (fromSquareId && toSquareId && fromSquareId !== toSquareId) {
+        movePiece(fromSquareId, toSquareId);
+    }
 });
 
 renderBoard();
-
 movePiece("E2", "E4");
