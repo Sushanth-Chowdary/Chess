@@ -1,5 +1,5 @@
 const board = document.querySelector('.chess-board');
-let side = "black"; // Or "white"
+let side = "black"; 
 
 if (side === "black") {
     board.classList.add('black-pov');
@@ -49,7 +49,7 @@ board.addEventListener('dragstart', (event) => {
 });
 
 board.addEventListener('dragover', (event) => {
-    event.preventDefault(); // Tells the browser "Yes, you can drop things here"
+    event.preventDefault(); 
 });
 
 board.addEventListener('drop', (event) => {
