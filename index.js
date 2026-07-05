@@ -3,6 +3,13 @@ let side = "white";
 
 const theme = localStorage.getItem('./pieces') || 'club';
 
+const boards = localStorage.getItem('boards') || 'brown';
+
+
+
+
+board.style.backgroundImage = `url('./boards/${boards}.png')`;
+
 if (side === "black") {
     board.classList.add('black-pov');
 } else {
