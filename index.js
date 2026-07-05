@@ -1,6 +1,8 @@
 const board = document.querySelector('.chess-board');
 let side = "white"; 
 
+const theme = localStorage.getItem('./pieces') || 'club';
+
 if (side === "black") {
     board.classList.add('black-pov');
 } else {
@@ -19,7 +21,7 @@ function renderBoard() {
         const element = document.getElementById(squareId);
         
         if (element) {
-            element.innerHTML = `<img src="./pieces/classic/${piece}.png" alt="${piece}" draggable="true" style="width:100%; height:100%; cursor:grab;">`;
+            element.innerHTML = `<img src="./pieces/${theme}/${piece}.png" alt="${piece}" draggable="true" style="width:100%; height:100%; cursor:grab;">`;
         }
     }
 }
